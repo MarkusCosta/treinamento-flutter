@@ -1,15 +1,12 @@
+import 'package:app2/src/mixins/ValidationMixin.dart';
+import 'package:app2/src/models/LoginForm.dart';
 import 'package:app2/src/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+class LoginScreen extends StatelessWidget  with ValidationMixin {
 
-class _LoginScreenState extends State<LoginScreen> {
-
-  String email = '';
-  String password = '';
+  final formKey = GlobalKey<FormState>();
+  final loginForm = LoginForm();
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +16,18 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Container(
         margin: EdgeInsets.only(left: 24, right: 24, top: 32),
-        child: Column(
-          children: <Widget>[
-            _emailField(),
-            _passwordField(),
-            SizedBox(
-              height: 24,
-            ),
-            _submitButton(),
-          ],
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: <Widget>[
+              _emailField(),
+              _passwordField(),
+              SizedBox(
+                height: 24,
+              ),
+              _submitButton(),
+            ],
+          ),
         ),
       ),
     );
@@ -39,9 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: InputDecoration(
         labelText: 'Email',
         hintText: 'you@provider.com',
-        errorText: null,
       ),
-      onChanged: (value) => email = value,
+      validator: validateEmail,
+      onSaved: (value) => loginForm.email = value,
     );
   }
 
@@ -51,28 +51,17 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: 'asd@123',
-        errorText: null,
       ),
-      onChanged: (value) => password = value,
+      validator: validatePassword,
+      onSaved: (value) => loginForm.password = value,
     );
   }
 
   Widget _submitButton() {
-    return PrimaryButton('Submit 2', () {
-      var isValid = true;
-      if (!email.contains('@')) {
-        isValid = false;
-        //PINTAR
-        // Setar msg erro
-
-      }
-
-      if (password.length < 4) {
-        isValid = false;
-      }
-
-      if (isValid) {
-        print('isValid: $isValid');
+    return PrimaryButton('Entrar', () {
+      if (formKey.currentState.validate()) {
+        formKey.currentState.save();
+        print(loginForm);
         // TODO - enviar dados
       }
     });

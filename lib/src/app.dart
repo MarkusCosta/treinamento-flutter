@@ -2,6 +2,8 @@ import 'package:app2/src/screens/login_screen.dart';
 import 'package:app2/src/screens/presentation_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'enums/screen.dart';
+
 class App extends StatelessWidget {
 
   @override
@@ -13,9 +15,7 @@ class App extends StatelessWidget {
         primaryColor: Colors.green[900],
         accentColor: Colors.green[900],
       ),
-      routes: {
-        '/login': (_) => LoginScreen(),
-      },
+      routes: ScreenRoute.routes,
     );
   }
 

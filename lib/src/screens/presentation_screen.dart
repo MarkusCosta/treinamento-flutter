@@ -1,3 +1,5 @@
+import 'package:app2/src/enums/screen.dart';
+import 'package:app2/src/extensions/navigator_screen.dart';
 import 'package:app2/src/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,7 @@ class PresentationScreen extends StatelessWidget {
         children: <Widget>[
           _presentationLogo(),
           _emptyExpandableSpace(),
-          PrimaryButton('PLAY', () => Navigator.pushReplacementNamed(context, '/login')),
+          PrimaryButton('PLAY', () => NavigatorScreen.pushReplacement(context, Screen.login)),
         ],
       ),
     );
