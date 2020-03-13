@@ -1,5 +1,5 @@
-import 'package:app2/src/enums/screen.dart';
-import 'package:app2/src/extensions/navigator_screen.dart';
+import 'package:app2/src/models/enums/screen.dart';
+import 'package:app2/src/models/extensions/navigator_screen.dart';
 import 'package:app2/src/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 

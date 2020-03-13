@@ -1,8 +1,6 @@
-import 'package:app2/src/screens/login_screen.dart';
-import 'package:app2/src/screens/presentation_screen.dart';
+import 'package:app2/src/models/enums/screen.dart';
+import 'package:app2/src/modules/presentation/view/presentation_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'enums/screen.dart';
 
 class App extends StatelessWidget {
 

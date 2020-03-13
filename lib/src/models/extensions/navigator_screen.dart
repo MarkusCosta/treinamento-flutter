@@ -1,4 +1,4 @@
-import 'package:app2/src/enums/screen.dart';
+import 'package:app2/src/models/enums/screen.dart';
 import 'package:flutter/material.dart';
 
 extension NavigatorScreen on Navigator {
